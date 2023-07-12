@@ -1,0 +1,271 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 3rem;
+  background: linear-gradient(90deg, hsla(277, 79%, 84%, 1) 0%, hsla(204, 95%, 77%, 1) 100%);
+}
+
+h1 {
+  font-size: 5rem;
+  color: #F2F6FB;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  text-shadow: 9px 8px 20px rgba(0, 0, 0, 0.78);
+}
+
+.container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 1rem;
+  grid-template-areas: "images colorboard";
+}
+
+.images {
+  grid-area: images;
+  background-color: #F2F6FB;
+  padding: 2rem;
+  margin: 0rem 0rem 0rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 9px 9px 32px 0px rgba(0, 0, 0, 0.22);
+  border-radius: 1rem;
+}
+
+.images-info {
+  border: 5px #8ccffc dashed;
+  border-radius: 0.5rem;
+  padding: 10rem;
+  width: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.images-info h2 {
+  color: #0095f6;
+  margin-bottom: 0.3rem;
+}
+
+.images-info p {
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+#image-container {
+  position: relative;
+  display: inline-block;
+  cursor: crosshair;
+}
+
+#image-container img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+#image-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.color-data {
+  grid-area: colorboard;
+  background-color: #F2F6FB;
+  padding: 1rem;
+  margin: 0rem 1rem 0rem 0rem;
+  max-height: 16.5rem;
+  position: sticky;
+  top: 1rem;
+  box-shadow: 9px 9px 32px 0px rgba(0, 0, 0, 0.22);
+  border-radius: 1rem;
+}
+
+#copy-button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #0095F6;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#copy-button:hover {
+  opacity: 0.8;
+}
+
+.color-history {
+  grid-area: colorboard;
+  background-color: #F2F6FB;
+  padding: 1rem;
+  margin: 1rem 1rem 0rem 0rem;
+  max-height: 16.5rem;
+  position: sticky;
+  top: calc(1rem + 16.5rem + 1rem);
+  box-shadow: 9px 9px 32px 0px rgba(0, 0, 0, 0.22);
+  border-radius: 1rem;
+}
+
+.color-square {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.color-square::after {
+  content: "Copied!";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.color-square.copy::after {
+  opacity: 1;
+}
+
+.color-history li {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.color-history li:hover {
+  cursor: pointer;
+}
+
+.color-history li:hover::after {
+  content: attr(data-color);
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 2;
+}
+
+#circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  border: 2px solid #fff;
+  left: -6px;
+  top: -6px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1224px) {
+  .color-square {
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    margin: 1rem;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "images"
+      "colorboard";
+  }
+
+  .images-info {
+    padding: 5rem;
+  }
+  
+  .images {
+    margin: 0;
+  }
+  
+  .color-data {
+    margin: 1rem 0;
+  }
+  
+  .color-history {
+    margin: 1rem 0;
+    top: initial;
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .images {
+    padding: 1rem;
+  }
+
+  .images-info {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  #copy-button {
+    margin-top: 5px;
+    padding: 8px 12px;
+  }
+  
+  .color-square {
+    height: 70px;
+  }
+  
+  .color-history li {
+    width: 30px;
+    height: 30px;
+  }
+}

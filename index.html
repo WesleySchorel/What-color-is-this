@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What color is this?</title>
+
+    <meta name="description" content="An online tool to identify colours in images.">
+    <meta name="keywords" content="What color is this, color picker, color in images">
+    <meta name="author" content="Wesley Schorel">
+
+    <link rel="icon" href="assets/favicon.png" />
+
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="scripts/index.js" defer></script>
+</head>
+
+<body>
+  <h1>What color is this?</h1>
+
+  <section class="container">
+    <section class="images">
+      <div class="images-info" id="images-info">
+        <h2>Select an image to upload</h2>
+        <p>Upload an image from your local files or clipboard.</p>
+        <input type="file" id="image-input" accept="image/*" />
+      </div>
+      <div id="image-container"></div>
+    </section>
+
+    <section class="colorboard">
+      <div class="color-data">
+        <h2 id="color-value">HEX color:</h2>
+        <div class="color-square"></div>
+        <button id="copy-button">Copy Hex Code</button>
+      </div>
+
+      <div class="color-history">
+        <h2>Recent colors:</h2>
+      </div>
+    </section>
+  </section>
+</body>
+</html>
