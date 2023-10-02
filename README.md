@@ -21,7 +21,7 @@ When you upload an image to the website you will be able to click on the image t
 
 You can then use the selected color in all your project as you wish.
 
-## 👤 User stories:
+## 👤 Stories:
 #1 As a user, I want to upload images from my local files or from my clipboard to the website. 
 
 #2 As a user I want to be able to select colors from images to find out the hex code.
